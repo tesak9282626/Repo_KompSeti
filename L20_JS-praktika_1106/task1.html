@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <input type="text" id="inputName" placeholder="Введите имя">
+    <button id="button">Сказать привет</button>
+    <p id="output">Какой то текст</p>
+    <script>
+        let output = document.querySelector("#output");
+        let button = document.querySelector("#button");
+        button.onclick = function () {
+            let name = document.querySelector("#inputName").value.trim();
+
+            if (name == "") {
+                output.style.color = "red";
+                output.textContent = "err";
+            } else {
+                output.style.color = "black";
+                output.textContent = "Привет, " + name + "! Добро пожаловать на сайт.";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <input type="tel" id="input">
+    <button id="button">Проверить</button>
+    <p id="output">Какой то текст</p>
+    <script>
+        const input = document.querySelector('#input');
+        const output = document.querySelector('#output');
+        const button = document.querySelector('#button');
+
+        function validatePhone() {
+            const phone = input.value.trim();
+
+            if (phone === '') {
+                output.textContent = 'Номер не может быть пустым';
+                output.style.color = 'red';
+                return;
+            }
+
+            const phoneRegex = /^\+?\d+$/;
+            if (!phoneRegex.test(phone)) {
+                output.textContent = 'Номер содержит недопустимые символы (разрешены только цифры и плюс в начале)';
+                output.style.color = 'red';
+                return;
+            }
+
+            let valid = false;
+            let errorMsg = '';
+
+            if (phone.startsWith('+')) {
+                if (phone.length === 12 && phone[1] === '7' && /^\d{10}$/.test(phone.slice(2))) {
+                    valid = true;
+                } else {
+                    errorMsg = 'Номер должен начинаться с +7 и содержать 10 цифр после +7';
+                }
+            } else if (phone.startsWith('8')) {
+                if (phone.length === 11 && /^\d{10}$/.test(phone.slice(1))) {
+                    valid = true;
+                } else {
+                    errorMsg = 'Номер должен начинаться с 8 и содержать 10 цифр после 8';
+                }
+            } else {
+                if (phone.length === 10 && /^\d{10}$/.test(phone)) {
+                    valid = true;
+                } else {
+                    errorMsg = 'Номер должен состоять из 10 цифр';
+                }
+            }
+
+            if (valid) {
+                output.textContent = 'Номер телефона верный';
+                output.style.color = 'green';
+            } else {
+                output.textContent = errorMsg;
+                output.style.color = 'red';
+            }
+        }
+
+        button.addEventListener('click', validatePhone);
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validatePhone();
+            }
+        });
+    </script>
+</body>
+
+</html>

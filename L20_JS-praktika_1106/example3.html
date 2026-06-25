@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="button">Поменять текст</button>
+<p id="text">Какой то текст</p>
+<script>
+    let oldText = document.querySelector("#text");
+    button.onclick = function() {
+    newText = "Клик сработал!";
+    oldText.style.color = "blue";
+    oldText.textContent = newText;
+    }
+</script>
+</body>
+</html>

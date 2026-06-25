@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <input type="number" id="inputCost">
+    <input type="number" id="inputAge">
+    <button id="button">Рассчитать</button>
+    <p id="output">Какой то текст</p>
+    <script>
+        let output = document.querySelector("#output");
+        let button = document.querySelector("#button");
+
+        button.onclick = function () {
+            let age = document.querySelector("#inputAge").value.trim();
+            let cost = document.querySelector("#inputCost").value.trim();
+            if (age < 18) {
+                cost = cost - (cost * 0.1);
+            } else if (age > 60) {
+                cost = cost - (cost * 0.2);
+            } else {
+                cost = cost;
+            }
+            output.textContent = "Итоговая сумма: " + cost;
+        }
+    </script>
+</body>
+
+</html>

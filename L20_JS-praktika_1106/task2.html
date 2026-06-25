@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <input type="number" id="inputA" placeholder="Введите число">
+    <input type="number" id="inputB" placeholder="Введите число">
+    <button id="button">Вычислить</button>
+    <p id="output">Какой то текст</p>
+    <script>
+        let output = document.querySelector("#output");
+        let button = document.querySelector("#button");
+        button.onclick = function () {
+            let inputA = document.querySelector("#inputA").value.trim();
+            let inputB = document.querySelector("#inputB").value.trim();
+            let a = parseFloat(inputA);
+            let b = parseFloat(inputB);
+            if (inputA == "" || inputB == "") {
+                output.textContent = "err";
+                inputA.textContent = "";
+                inputB.textContent = "";
+            } else {
+                let sum = a + b;
+                output.textContent = "Сумма: " + sum;
+                inputA.textContent = "";
+                inputB.textContent = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
